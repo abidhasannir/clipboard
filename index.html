@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clipboard Capture</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        #output { margin-top: 20px; font-size: 18px; color: blue; }
+    </style>
+</head>
+<body>
+
+    <h2>Clipboard Text Capture</h2>
+    <button onclick="readClipboard()">Capture Clipboard</button>
+    <p id="output">Clipboard data will appear here...</p>
+
+    <script>
+        async function readClipboard() {
+            try {
+                const text = await navigator.clipboard.readText();
+                document.getElementById("output").innerText = "Clipboard: " + text;
+            } catch (err) {
+                document.getElementById("output").innerText = "Permission denied!";
+                console.error("Error:", err);
+            }
+        }
+    </script>
+
+</body>
+</html>
